@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remote Access</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            min-height: 100vh; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: #020604;
+        }
+
+      .bg-blur {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://i.ibb.co/ymJfpTQr/1bc13dbb-3995-436f-bda1-489f2185eec1.jpg') no-repeat center center;
+            background-size: cover;
+            filter: blur(10px) brightness(0.6);
+            transform: scale(1.1); 
+            z-index: -2;
+        }
+
+        .bg-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, rgba(6, 78, 59, 0.3), rgba(2, 6, 4, 0.85));
+            z-index: -1;
+        }
+
+        .dark-glass-card {
+            background: rgba(5, 12, 9, 0.6);
+            backdrop-filter: blur(20px) saturate(140%);
+            -webkit-backdrop-filter: blur(20px) saturate(140%);
+            border: 1px solid rgba(16, 185, 129, 0.15);
+            box-shadow: 
+                0 25px 50px -12px rgba(0, 0, 0, 0.9),
+                0 0 30px -10px rgba(16, 185, 129, 0.1),
+                inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .btn-primary {
+            background: rgba(255, 255, 255, 0.95);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            background: #ffffff;
+            box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            background: rgba(16, 185, 129, 0.1);
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-blur"></div>
+    <div class="bg-overlay"></div>
+
+    <div class="dark-glass-card animate-fade-in-up p-8 rounded-3xl w-full max-w-xs text-center mx-4">
+        
+        <div class="mx-auto mb-5 w-14 h-14 flex items-center justify-center rounded-2xl bg-black/20 border border-emerald-400/10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-emerald-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
+            </svg>
+        </div>
+
+        <h1 class="text-2xl font-bold text-white tracking-tight">Remote Access</h1>
+        <p class="text-emerald-100/50 text-sm font-light mt-2 mb-8">This system is ready to connect.</p>
+
+        <div class="space-y-3">
+            <a href="vnc.html" class="btn-primary group flex items-center justify-center gap-2 w-full py-3.5 text-emerald-900 rounded-xl font-semibold text-sm">
+                Full UI
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+            </a>
+            
+            <a href="vnc_lite.html" class="btn-secondary group flex items-center justify-center gap-2 w-full py-3.5 text-white rounded-xl font-medium text-sm">
+                Lite Mode
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-emerald-300/70 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+            </a>
+        </div>
+
+        <p class="text-emerald-100/30 text-xs font-light mt-6">NoVNC server powered by Alpine Linux</p>
+    </div>
+
+</body>
+</html>
